@@ -1,4 +1,4 @@
-import { posts, nextPostId, Post } from "../data/postData";
+import { posts, Post, nextPostId } from "../data/postData";
 
 export const createPost = (
   title: string,
@@ -6,7 +6,7 @@ export const createPost = (
   authorId: number
 ): Post => {
   const newPost: Post = {
-    id,
+    id: getNextPostId(), // corrigido aqui
     title,
     content,
     authorId,

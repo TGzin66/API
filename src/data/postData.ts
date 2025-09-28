@@ -1,8 +1,6 @@
 import { User } from "../bd";
 
-export const postState = {
-  nextPostId: 1,
-};
+let nextPostId = 1;
 
 export interface Post {
   id: number;
@@ -13,5 +11,10 @@ export interface Post {
   published: boolean;
 }
 
+// Lista de posts
 export const posts: Post[] = [];
-export let nextPostId = 1;
+
+// Função para gerar o próximo id
+export const getNextPostId = (): number => {
+  return nextPostId++;
+};
