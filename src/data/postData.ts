@@ -1,4 +1,8 @@
-import { User } from "./bd";
+import { User } from "../bd";
+
+export const postState = {
+  nextPostId: 1,
+};
 
 export interface Post {
   id: number;
