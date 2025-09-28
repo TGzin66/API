@@ -18,27 +18,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-//ex: 1 ------------ (descomentar para testar!!!!!)
-
-/*app.get("/users/:id", (req: express.Request, res: express.Response) => {
-  const userId = parseInt(req.params.id);
-  const user = users.find((u) => u.id === userId);
-
-  if (!user) {
-    return res.status(404).json({
-      success: false,
-      message: "usuário não encontrado",
-    });
-  }
-
-  res.json({
-    success: true,
-    user,
-  });
-});
-*/
-
-//ex: 2 ---------------(comentar o 1 para testar!!!)
+//ex: 2 --------------
 
 app.get("/users/age-range", (req: express.Request, res: express.Response) => {
   const min = Number(req.query.min);
@@ -58,6 +38,25 @@ app.get("/users/age-range", (req: express.Request, res: express.Response) => {
   res.json({
     success: true,
     users: userfiltrado,
+  });
+});
+
+//ex: 1 ----------
+
+app.get("/users/:id", (req: express.Request, res: express.Response) => {
+  const userId = parseInt(req.params.id);
+  const user = users.find((u) => u.id === userId);
+
+  if (!user) {
+    return res.status(404).json({
+      success: false,
+      message: "usuário não encontrado",
+    });
+  }
+
+  res.json({
+    success: true,
+    user,
   });
 });
 

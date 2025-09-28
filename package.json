@@ -20,5 +20,13 @@
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.9.2"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TGzin66/API.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TGzin66/API/issues"
+  },
+  "homepage": "https://github.com/TGzin66/API#readme",
   "description": ""
 }
