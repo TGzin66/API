@@ -30,4 +30,36 @@ export class UserController {
       res.status(500).send({ error: error.message });
     }
   };
+
+  public create = async (req: Request, res: Response) => {
+    try {
+      const newUser = await this.userBusiness.createUser(req.body);
+      res.status(201).json(newUser);
+    } catch (error: any) {
+      res.status(error.status || 500).json({ error: error.message });
+    }
+  };
+
+  public update = async (req: Request, res: Response) => {
+    try {
+      const idNumber = Number(req.params.id);
+      const updatedUser = await this.userBusiness.updateUser(
+        idNumber,
+        req.body
+      );
+      res.status(200).json(updatedUser);
+    } catch (error: any) {
+      res.status(error.status || 500).json({ error: error.message });
+    }
+  };
+
+  public delete = async (req: Request, res: Response) => {
+    try {
+      const idNumber = Number(req.params.id);
+      await this.userBusiness.deleteUser(idNumber);
+      res.status(204).send();
+    } catch (error: any) {
+      res.status(error.status || 500).json({ error: error.message });
+    }
+  };
 }
