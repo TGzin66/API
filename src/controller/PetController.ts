@@ -30,4 +30,33 @@ export class PetController {
       res.status(500).send({ error: error.message });
     }
   };
+
+  public create = async (req: Request, res: Response) => {
+    try {
+      const newPet = await this.petBusiness.createPet(req.body);
+      res.status(201).json(newPet);
+    } catch (error: any) {
+      res.status(error.status || 500).json({ error: error.message });
+    }
+  };
+
+  public update = async (req: Request, res: Response) => {
+    try {
+      const idNumber = Number(req.params.id);
+      const updatedPet = await this.petBusiness.updatePet(idNumber, req.body);
+      res.status(200).json(updatedPet);
+    } catch (error: any) {
+      res.status(error.status || 500).json({ error: error.message });
+    }
+  };
+
+  public delete = async (req: Request, res: Response) => {
+    try {
+      const idNumber = Number(req.params.id);
+      await this.petBusiness.deletePet(idNumber);
+      res.status(204).send();
+    } catch (error: any) {
+      res.status(error.status || 500).json({ error: error.message });
+    }
+  };
 }
